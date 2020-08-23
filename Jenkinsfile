@@ -6,7 +6,7 @@ stages {
 	steps {
 	    parallel (
 		"Slaves 2 Clone": {
-		    node("Slave2") {
+		    node("Slave1") {
 			git https://github.com/thukten/mavenwebapp.git
 		    }
 		}
@@ -17,7 +17,7 @@ stages {
         steps {
             parallel (
                 "Slave2 Test": {
-                    node('Slave2') { // I need to reuse Jenkins-node-lin1 here 
+                    node('Slave1') { // I need to reuse Jenkins-node-lin1 here 
                         sh "mvn compile"
                     }
                 }
@@ -28,7 +28,7 @@ stages {
         steps {
             parallel (
                 "Slave2 Deploy": {
-                    node('Slave2') { // Same story down here
+                    node('Slave1') { // Same story down here
                         sh "mvn test"
                     }
                 }
