@@ -2,16 +2,16 @@ pipeline {
 agent none
 
 stages {
-    stage("Cloning") {
-	steps {
-	    parallel (
-		"Slaves 2 Clone": {
-		    node("Slave1") {
-			git https://github.com/thukten/mavenwebapp.git
-		    }
-		}
-	    )
-	}
+    stage('Clone') {
+        steps {
+            parallel (
+                "Slave2 Test": {
+                    node('Slave1') { 
+                        git 'https://github.com/thukten/mavenwebapp.git'
+                    }
+                }
+            )
+        }
     }
     stage('Compile') {
         steps {
