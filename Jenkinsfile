@@ -9,12 +9,12 @@ pipeline {
             steps {
             parallel (
                 "Slave1 Build": {
-                    node('Salve 1') {
+                    node('Salve1') {
                         slave1_node = env.Slave1
                     }
                 },
                 "Slave2 Build": {
-                    node('Slave 2') {
+                    node('Slave2') {
                         slave2_node = env.Slave2
                     }
                 }
