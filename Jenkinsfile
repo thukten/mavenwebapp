@@ -5,8 +5,8 @@ stages {
     stage('Compile') {
         steps {
             parallel (
-                "Slave1 Test": {
-                    node('Slave1') { // I need to reuse Jenkins-node-lin1 here 
+                "Slave2 Test": {
+                    node('Slave2') { // I need to reuse Jenkins-node-lin1 here 
                         sh "mvn compile"
                     }
                 }
@@ -16,8 +16,8 @@ stages {
     stage('Test') {
         steps {
             parallel (
-                "Slave1 Deploy": {
-                    node('Slave1') { // Same story down here
+                "Slave2 Deploy": {
+                    node('Slave2') { // Same story down here
                         sh "mvn test"
                     }
                 }
