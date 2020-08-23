@@ -48,6 +48,7 @@ pipeline {
                     "Slave2 Deploy": {
                         node(slave2_node) {
                             sh "mvn test"
+			}
                     }
                 )
             }
